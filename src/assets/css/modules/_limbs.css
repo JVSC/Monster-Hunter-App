@@ -1,0 +1,39 @@
+.limbs{
+	height: 1.5rem;
+	width: $mediumSize;
+	margin: 1rem;
+
+	&__title{
+		display: inline-block;
+		width: 45%;
+		height: 100%;
+		margin-right: 5%;
+		float: left;
+		text-align: left;
+		font-size: 12px;
+		text-align: center;
+		box-sizing: border-box;
+		background-image: linear-gradient(to right, rgba(43,44,45,0), rgba(43,44,45,0.5), rgba(0,0,0,0));
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		color: white;
+	}
+
+	&__ai{
+		display: inline-block;
+		height: 100%;
+		width: 25px;
+		margin-right: 3px;
+		background-color: $darkBrown;
+		border: 4px double $lightBrown;
+		text-align: center;
+		box-sizing: border-box;
+		&:hover{
+			border: 4px double $pukeGreen;
+		}
+	}
+
+	& img{
+		margin: auto;
+	}
+}

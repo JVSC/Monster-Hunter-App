@@ -1,0 +1,11 @@
+@import './variables/_variables.css';
+@import './global/_global.css';
+@import './modules/_holder.css';
+@import './modules/_limbs.css';
+@import './modules/_filter.css';
+@import './modules/_superpower.css';
+
+.container{
+	margin: 2rem auto;
+	width: 70%;
+}

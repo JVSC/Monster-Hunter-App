@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Kurale');
+	
+html{
+	background: url(../img/bg.jpg) no-repeat center center fixed;
+  	background-size: cover;
+  	height: 100%;
+}
+
+body{
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.legs{
+	content: url('../img/legs.png');
+}
+
+.gloves{
+	content: url('../img/gloves.png');	
+}
+
+.waist{
+	content: url('../img/waist.png');
+}
+
+.head{
+	content: url('../img/head.png');
+}
+
+.chest{
+	content: url('../img/chest.png');
+}
