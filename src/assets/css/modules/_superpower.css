@@ -9,8 +9,9 @@
 	padding: 0.2rem;
 
 	&__full{
-		width: 90%;
-		height: 50%;
+		height: 45%;
+		overflow: auto;
+		position: relative;
 	}
 
 	&__icon{
@@ -33,12 +34,31 @@
 		margin-bottom: 0.5rem;
 		padding-bottom: 0.5rem;
 		box-sizing: border-box;
+		
+		&--bigger{
+			width: 100%;
+			padding: 0.4rem;
+		}
+
+		&--list{
+			border: none;
+			margin: 0;
+		}
 	}
 
 	&__name{
 		color: $dirtyOrange;
-		font-size: 0.75rem;
+		font-size: 0.65rem;
 		font-weight: bold;
+
+		&--whitesmoke{
+			color: whitesmoke;
+		}
+		
+		&--main{
+			color: #C2DD7E;
+			font-size: 0.9rem;
+		}
 	}
 
 	&__shortie{
@@ -49,5 +69,29 @@
 	&__detail{
 		color: $lightBlue;
 		cursor: pointer;
+		&--lesser{
+			color: #98A186;
+			font-size: 0.65rem;
+			cursor: default;
+		}
+	}
+
+	&__search{
+		font-size: 0.85rem;
+		padding-left: 0.1rem;
+		font-weight: Italic;
+		margin-bottom: 0.5rem;
+		box-sizing: border-box;
+		border: 4px double $grey;
+	}
+
+	&__input{
+		outline: none;
+		border: none;
+		background-color: inherit;
+		color: #636466;
+		display: inline-block;
+		width: 60%;
+		margin-left: 0.3rem;
 	}
 }
