@@ -13,7 +13,8 @@
 					</div>
 				</div>
 			</section>
-			<button class='filter__key filter__key--large'>
+			<button class='filter__key filter__key--large'
+					@click='filterArmor(focus.name)'	>
 				Filter
 			</button>
 		</section>
@@ -36,6 +37,8 @@
 </template>
 
 <script>
+
+	import { bus } from "../main";
 	export default {
 		props: ['skills'],
 		data() {
@@ -54,6 +57,9 @@
 			},
 			readMore(skill) {
 				this.focus = skill
+			},
+			filterArmor(skillName){
+				bus.$emit('armor_filter', skillName)
 			}
 		},
 		watch: {

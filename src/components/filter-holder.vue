@@ -54,9 +54,14 @@ export default {
           else this.filters[i].status = false;
         }
       }
-
       bus.$emit("filtered", val);
     }
+  },
+  mounted(){
+    bus.$on('reset_all', ()=>{
+      for (let i = 0; i < this.filters.length; i++)
+        this.filters[i].status = false;
+    })
   }
 };
 </script>
