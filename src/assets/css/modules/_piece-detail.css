@@ -1,0 +1,16 @@
+.piece-detail {
+    width: 15rem;
+    height: 30rem;
+    position: absolute;
+    background-color: $fadeBlack;
+    top: 10%;
+    left: 40%;
+    z-index: 10;
+    color: white;
+    
+    &__img{   
+        width: 100%;
+        height: 10rem;
+        padding: 1rem 3.2rem;
+    }
+}

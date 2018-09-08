@@ -26,6 +26,13 @@
 		color: $lightBlue;
 		text-align: center;
 		box-sizing: border-box;
+
+		&--img{
+			width: 8rem;
+			height: 8rem;
+			background-color: $fadeGrey;
+			box-shadow: 0 0 5px 5px $fadeGrey;
+		}
 	}
 
 	&__name{	

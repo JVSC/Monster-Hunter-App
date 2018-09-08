@@ -9,6 +9,7 @@
 		height: 100%;
 		margin-right: 5%;
 		float: left;
+		cursor: pointer;
 		text-align: left;
 		font-size: 12px;
 		text-align: center;
@@ -17,6 +18,9 @@
 		border-top-left-radius: 10px;
 		border-bottom-left-radius: 10px;
 		color: white;
+	}
+	&__title:hover{
+		text-shadow: 0 0 0.2rem white;
 	}
 
 	&__ai{
