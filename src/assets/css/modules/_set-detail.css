@@ -1,14 +1,37 @@
 .set-detail {
-    width: 35rem;
+    width: 25rem;
     height: 20rem;
     position: absolute;
-    background-color: white;
+    background-color: $fadeBlack;
     top: 20%;
     left: 30%;
     z-index: 10;
 
     &__img{
-        width: 5rem;
-        height: 5rem;
+        width: 4rem;
+        height: 4rem;
+    }
+
+    &__rep{
+		background-image: linear-gradient(rgba(43,44,45,0), rgba(43,44,45,0.5), rgba(0,0,0,0));
+        width: 4rem;
+        height: 4rem;
+        text-align: center;
+        margin: 2rem;
+        display: inline-block;
+        border: 1px solid $grey;
+    }
+    
+    &__rep:hover{
+        border: 1px solid $dirtyOrange;
+    }
+
+    &__name{
+        color: $lightBlue;
+        text-align: center;
+        margin: auto;
+        height: 2rem;
+        padding-top:0.5rem;
+        border-bottom: 1px solid $grey;
     }
 }

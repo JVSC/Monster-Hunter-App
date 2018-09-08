@@ -2,6 +2,7 @@
 <main class="container">
 
   <component 
+    v-click-outside="onClickOutside"
     :is='component.data[0]' 
     :data='component.data[1]' 
     v-if='component.visibility'>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import vClickOutside from 'v-click-outside'
 import filterHolder from "./components/filter-holder.vue";
 import gearHolder from "./components/gear-holder.vue";
 import skillHolder from "./components/skill-holder.vue";
@@ -50,6 +52,11 @@ export default {
       counter: 0
     };
   },
+  methods:{
+    onClickOutside(){
+      this.component.visibility = false;
+    }
+  },
   watch: {
     counter() {
       if (this.counter > 3) this.loaded = true;
@@ -79,6 +86,9 @@ export default {
         self.counter++;
       });
     });
+  },
+  directives: {
+    clickOutside: vClickOutside.directive
   }
 };
 </script>

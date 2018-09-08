@@ -10,9 +10,7 @@ $mediumSize: 18rem;
 
 /* COLOR VARIVABLES UNDER HERE */
 
-$blakew: rgb(24, 25, 15);
-$fadeBrown: #4c3e2f;
-
+$blakew: rgba(61, 20, 6, 0.9);
 $dirtyOrange: #A86500;
 $pukeGreen: #DEE75D;
 $grey: #4F4B4A;

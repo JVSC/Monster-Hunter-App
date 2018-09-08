@@ -1,12 +1,11 @@
 <template>
     <main class='set-detail'>
-    <div>
+    <div class='set-detail__name'>
         {{ data.setName }} Armor Set
-        {{ data.rank }} Rank
-        {{ data.rarity }}
     </div>
         <div v-for='piece in data.pieces'
-        :key='piece.name'>
+        :key='piece.name'
+        class='set-detail__rep'>
             <img class='set-detail__img' :src="piece.imgsrc" :alt="piece.name">
         </div>
     </main>
