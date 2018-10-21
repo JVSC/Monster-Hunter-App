@@ -7,6 +7,16 @@
     left: 30%;
     z-index: 10;
 
+    &__rank{
+        display: inline-block;
+        width: 40%;
+    }
+
+    &__skillName{
+        display: inline-block;
+        width: 40%;
+    }
+
     &__img{
         width: 4rem;
         height: 4rem;

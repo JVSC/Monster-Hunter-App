@@ -1,33 +1,39 @@
 <template>
 <main class="container">
 
-  <component 
-    v-click-outside="onClickOutside"
-    :is='component.data[0]' 
-    :data='component.data[1]' 
-    v-if='component.visibility'>
-  </component>
+  <set 
+    :data='component.data1' 
+    v-if='component.visibility1'>
+  </set>
+
+    <piece 
+    :data='component.data2' 
+    v-if='component.visibility2'>
+    </piece>
   
   <div v-if='loaded'>
     <filter-holder></filter-holder>
     <gear-holder :data='data.armorsets'></gear-holder>
     <skill-holder :skills='data.skills'></skill-holder>
+    <builder></builder>
   </div>
 
 </main>
 </template>
 
 <script>
-import vClickOutside from 'v-click-outside'
+import vClickOutside from "v-click-outside";
 import filterHolder from "./components/filter-holder.vue";
 import gearHolder from "./components/gear-holder.vue";
 import skillHolder from "./components/skill-holder.vue";
+import builder from './components/builder/builder.vue';
 import set from "./components/set.vue";
 import piece from "./components/piece.vue";
 import { bus } from "./main";
 
 export default {
   components: {
+    "builder": builder,
     "filter-holder": filterHolder,
     "gear-holder": gearHolder,
     "skill-holder": skillHolder,
@@ -39,8 +45,10 @@ export default {
     return {
       message: "Hello",
       component: {
-        data: "",
-        visibility: false
+        data1: "",
+        data2: "",
+        visibility1: false,
+        visibility2: false
       },
       data: {
         armorsets: "",
@@ -52,22 +60,30 @@ export default {
       counter: 0
     };
   },
-  methods:{
-    onClickOutside(){
-      this.component.visibility = false;
-    }
-  },
   watch: {
     counter() {
       if (this.counter > 3) this.loaded = true;
     }
   },
+
   mounted() {
     bus.$on("showArmor", payload => {
-      console.log(payload);
-      this.component.data = payload;
-      this.component.visibility = true;
+      if (payload[0] == "set") {
+        this.component.data1 = payload[1];
+        this.component.visibility1 = true;
+      } else {
+        this.component.data2 = payload[1];
+        this.component.visibility2 = true;
+      }
     });
+
+    bus.$on("close_piece", ()=>{
+      this.component.visibility2 = false;
+    });
+
+    bus.$on("close_set", ()=>{
+      this.component.visibility1 = false;
+    })
   },
   created() {
     const self = this;

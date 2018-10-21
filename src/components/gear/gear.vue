@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     show(name, load) {
-      let payload = [name, load]
+      let payload = [name, load];
       bus.$emit("showArmor", payload);
     }
   },
