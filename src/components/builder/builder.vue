@@ -1,12 +1,18 @@
 <template>
     <section class="holder holder--xl">
         <section class='build__section'>  
-            <div v-for='piece in build' 
+            <div class='build__pieces'>
+              <div v-for='piece in build' 
                 :key='piece.type' 
                 :class="'build__piece'">
                 <div :class="'build__'+piece.type+ ' build__imgsize'"></div>{{ piece.name | greekfy }}
+              </div>
+            </div>
+            <div class="build__pieces build__pieces--narrow">
+              <div class='build__piece build__piece--weapon'></div>
             </div>
         </section>
+        
     </section>
 </template>
 
@@ -19,11 +25,11 @@ export default {
   data() {
     return {
       build: {
-        head: "",
-        chest: "",
-        gloves: "",
-        waist: "",
-        legs: ""
+        head: {type:'head', name: 'none'},
+        chest: {type: 'chest', name: 'none'},
+        gloves: {type: 'gloves', name: 'none'},
+        waist: {type: 'waist', name: "none"},
+        legs: {type: 'legs', name: 'none'}
       }
     };
   },

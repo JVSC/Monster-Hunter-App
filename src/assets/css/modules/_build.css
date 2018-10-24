@@ -3,17 +3,32 @@
 
     &__section{
         width: 100%;
-        height: 35%;
-        background-color: black;
+        height: 9.8rem;
         color: white;
     }
 
-    &__piece{
+    &__pieces{
+        padding: 0.5rem;
+        height: 90%;
         width: 60%;
+        box-sizing: border-box;
+        background-color: $fadeGrey;
+        float: left;
+        &--narrow{
+            width: 40%;
+        }
+    }
+
+    &__piece{
+        width: 100%;
         height: 1.5rem;
         margin: 0.5%;
         font-size: 0.8rem;
-        background-color: $dirtyOrange;
+        background-color: $fadeGrey;
+        &--weapon{
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &__imgsize{
