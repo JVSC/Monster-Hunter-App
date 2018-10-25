@@ -20,7 +20,11 @@ help.collect = build => {
             }        
         }
     }
-    console.log(total);
+    return total
+}
+
+help.collect_skills = build => {
+    console.log(build)
 }
 
 export default help;

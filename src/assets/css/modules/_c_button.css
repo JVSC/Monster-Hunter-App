@@ -7,7 +7,7 @@
     background-color: black;
     display: inline-block;
     outline: none;
-    border: 1px dashed $lightBlue;  
+    border: none;  
     color: $lightBlue;
     box-sizing: border-box;
     float: right;

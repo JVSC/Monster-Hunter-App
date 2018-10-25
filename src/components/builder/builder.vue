@@ -12,7 +12,7 @@
               <div class='build__piece build__piece--weapon'></div>
             </div>
         </section>
-        
+        {{ set.stats }}
     </section>
 </template>
 
@@ -25,29 +25,34 @@ export default {
   data() {
     return {
       build: {
-        head: {type:'head', name: 'none'},
-        chest: {type: 'chest', name: 'none'},
-        gloves: {type: 'gloves', name: 'none'},
-        waist: {type: 'waist', name: "none"},
-        legs: {type: 'legs', name: 'none'}
+        head: { type: "head", name: "none" },
+        chest: { type: "chest", name: "none" },
+        gloves: { type: "gloves", name: "none" },
+        waist: { type: "waist", name: "none" },
+        legs: { type: "legs", name: "none" }
+      },
+      set: {
+        stats: "",
+        skills: ""
       }
     };
   },
   watch: {
     "build.head"() {
-      help.collect(this.build);
+      this.set.stats = help.collect(this.build);
     },
     "build.chest"() {
-      help.collect(this.build);
+      this.set.stats = help.collect(this.build);
+      help.collect_skills(this.build);  
     },
     "build.waist"() {
-      help.collect(this.build);
+      this.set.stats = help.collect(this.build);
     },
     "build.gloves"() {
-      help.collect(this.build);
+      this.set.stats = help.collect(this.build);
     },
     "build.legs"() {
-      help.collect(this.build);
+      this.set.stats = help.collect(this.build);
     }
   },
   mounted() {

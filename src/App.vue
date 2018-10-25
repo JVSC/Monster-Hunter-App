@@ -1,24 +1,28 @@
 <template>
 <main class="container">
-
-  <set 
-    :data='component.data1' 
-    v-if='component.visibility1'>
-  </set>
+  <section v-if='loaded'>
+    <set 
+      :data='component.data1' 
+      v-if='component.visibility1'>
+    </set>
 
     <piece 
-    :data='component.data2' 
-    v-if='component.visibility2'>
+      :data='component.data2' 
+      v-if='component.visibility2'>
     </piece>
   
-  <div v-if='loaded'>
-    <filter-holder></filter-holder>
-    <gear-holder :data='data.armorsets'></gear-holder>
-    <skill-holder :skills='data.skills'></skill-holder>
-    <builder></builder>
+    <div>
+      <filter-holder></filter-holder>
+      <gear-holder :data='data.armorsets'></gear-holder>
+      <skill-holder :skills='data.skills'></skill-holder>
+      <builder></builder>
+    </div>
+  </section>
+  <div v-else>
+    <div  class='loading_screen'></div>
   </div>
-
 </main>
+
 </template>
 
 <script>
@@ -26,14 +30,14 @@ import vClickOutside from "v-click-outside";
 import filterHolder from "./components/filter-holder.vue";
 import gearHolder from "./components/gear-holder.vue";
 import skillHolder from "./components/skill-holder.vue";
-import builder from './components/builder/builder.vue';
+import builder from "./components/builder/builder.vue";
 import set from "./components/set.vue";
 import piece from "./components/piece.vue";
 import { bus } from "./main";
 
 export default {
   components: {
-    "builder": builder,
+    builder: builder,
     "filter-holder": filterHolder,
     "gear-holder": gearHolder,
     "skill-holder": skillHolder,
@@ -54,7 +58,8 @@ export default {
         armorsets: "",
         decorations: "",
         charms: "",
-        skills: ""
+        skills: "",
+        weapons: ""
       },
       loaded: false,
       counter: 0
@@ -62,7 +67,10 @@ export default {
   },
   watch: {
     counter() {
-      if (this.counter > 3) this.loaded = true;
+      if (this.counter > 4) this.loaded = true;
+    },
+    loaded() {
+      this.$cookies.set('data', this.data).config('30d')
     }
   },
 
@@ -77,31 +85,37 @@ export default {
       }
     });
 
-    bus.$on("close_piece", ()=>{
+    bus.$on("close_piece", () => {
       this.component.visibility2 = false;
     });
 
-    bus.$on("close_set", ()=>{
+    bus.$on("close_set", () => {
       this.component.visibility1 = false;
-    })
+    });
   },
   created() {
-    const self = this;
-    const uri1 = "https://monhun-api.herokuapp.com/armorset";
-    const uri2 = "https://mhw-db.com/";
-    const bases = ["decorations", "charms", "skills"];
+    const data = this.$cookies.get("data")
+    if ( data == null) {
+      const self = this;
+      const uri1 = "https://monhun-api.herokuapp.com/armorset";
+      const uri2 = "https://mhw-db.com/";
+      const bases = ["decorations", "charms", "skills", "weapons"];
 
-    self.$http.get(uri1).then(response => {
-      self.data.armorsets = response.body;
-      self.counter++;
-    });
-
-    bases.forEach(base => {
-      self.$http.get(uri2 + base).then(response => {
-        self.data[base] = response.body;
+      self.$http.get(uri1).then(response => {
+        self.data.armorsets = response.body;
         self.counter++;
       });
-    });
+
+      bases.forEach(base => {
+        self.$http.get(uri2 + base).then(response => {
+          self.data[base] = response.body;
+          self.counter++;
+        });
+      });
+
+    } else {
+      this.data = data;
+    }
   },
   directives: {
     clickOutside: vClickOutside.directive
