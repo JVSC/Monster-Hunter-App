@@ -12,7 +12,14 @@
               <div class='build__piece build__piece--weapon'></div>
             </div>
         </section>
-        {{ set.stats }}
+        <section class="build__section">
+          <div 
+            v-for='skill in set.skills' 
+            :key="skill.name"
+            class='build__piece'>
+            {{skill.name}} {{skill.level}}
+          </div>
+        </section>
     </section>
 </template>
 
@@ -40,19 +47,23 @@ export default {
   watch: {
     "build.head"() {
       this.set.stats = help.collect(this.build);
+      this.set.skills = help.skills(this.build);
     },
     "build.chest"() {
       this.set.stats = help.collect(this.build);
-      help.collect_skills(this.build);  
+      this.set.skills = help.skills(this.build);
     },
     "build.waist"() {
       this.set.stats = help.collect(this.build);
+      this.set.skills = help.skills(this.build);
     },
     "build.gloves"() {
       this.set.stats = help.collect(this.build);
+      this.set.skills = help.skills(this.build);
     },
     "build.legs"() {
       this.set.stats = help.collect(this.build);
+      this.set.skills = help.skills(this.build);
     }
   },
   mounted() {

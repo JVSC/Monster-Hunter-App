@@ -17,9 +17,10 @@
       <skill-holder :skills='data.skills'></skill-holder>
       <builder></builder>
     </div>
+    
   </section>
   <div v-else>
-    <div  class='loading_screen'></div>
+    <div  class='loading_screen'>{{ counter }}</div>
   </div>
 </main>
 
@@ -67,10 +68,7 @@ export default {
   },
   watch: {
     counter() {
-      if (this.counter > 4) this.loaded = true;
-    },
-    loaded() {
-      this.$cookies.set('data', this.data).config('30d')
+      if (this.counter >= 3) this.loaded = true;
     }
   },
 
@@ -94,28 +92,22 @@ export default {
     });
   },
   created() {
-    const data = this.$cookies.get("data")
-    if ( data == null) {
-      const self = this;
-      const uri1 = "https://monhun-api.herokuapp.com/armorset";
-      const uri2 = "https://mhw-db.com/";
-      const bases = ["decorations", "charms", "skills", "weapons"];
+    const self = this;
+    const uri1 = "https://monhun-api.herokuapp.com/armorset";
+    const uri2 = "https://mhw-db.com/";
+    const bases = ["decorations", "charms", "skills", "weapons"];
 
-      self.$http.get(uri1).then(response => {
-        self.data.armorsets = response.body;
+    self.$http.get(uri1).then(response => {
+      self.data.armorsets = response.body;
+      self.counter++;
+    });
+
+    bases.forEach(base => {
+      self.$http.get(uri2 + base).then(response => {
+        self.data[base] = response.body;
         self.counter++;
       });
-
-      bases.forEach(base => {
-        self.$http.get(uri2 + base).then(response => {
-          self.data[base] = response.body;
-          self.counter++;
-        });
-      });
-
-    } else {
-      this.data = data;
-    }
+    });
   },
   directives: {
     clickOutside: vClickOutside.directive
