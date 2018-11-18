@@ -68,7 +68,7 @@ export default {
   },
   watch: {
     counter() {
-      if (this.counter >= 3) this.loaded = true;
+      if (this.counter >= 5) this.loaded = true;
     }
   },
 

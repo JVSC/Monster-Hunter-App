@@ -15,6 +15,7 @@ help.collect = build => {
             total.defense += Number(build[piece].defense);
             let currentGear = build[piece].resistances;
             
+            
             for ( let resistance in currentGear){
                 total[resistance] += Number(currentGear[resistance])
             }
@@ -39,8 +40,24 @@ help.skills = build =>{
             })
         }
     }
-    console.log(counts);
     return counts;
+}
+
+help.slots = build =>{
+    let slots = {
+        gem_level_1:0,
+        gem_level_2:0,
+        gem_level_3:0,
+    };
+
+    for ( let piece in build){
+        if (build[piece].slots){
+            for(let slot in build[piece].slots){
+                slots[slot] += build[piece].slots[slot];
+            }
+        }
+    }
+    return slots;
 }
 
 export default help;

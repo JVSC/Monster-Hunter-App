@@ -40,30 +40,36 @@ export default {
       },
       set: {
         stats: "",
-        skills: ""
-      }
+        skills: "",
+        slots: ""
+      },
     };
   },
   watch: {
     "build.head"() {
       this.set.stats = help.collect(this.build);
       this.set.skills = help.skills(this.build);
+      this.set.slots = help.slots(this.build);
     },
     "build.chest"() {
       this.set.stats = help.collect(this.build);
       this.set.skills = help.skills(this.build);
+      this.set.slots = help.slots(this.build);
     },
     "build.waist"() {
       this.set.stats = help.collect(this.build);
       this.set.skills = help.skills(this.build);
+      this.set.slots = help.slots(this.build);
     },
     "build.gloves"() {
       this.set.stats = help.collect(this.build);
       this.set.skills = help.skills(this.build);
+      this.set.slots = help.slots(this.build);
     },
     "build.legs"() {
       this.set.stats = help.collect(this.build);
       this.set.skills = help.skills(this.build);
+      this.set.slots = help.slots(this.build);
     }
   },
   mounted() {
