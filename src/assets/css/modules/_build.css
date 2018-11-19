@@ -10,7 +10,7 @@
     &__pieces{
         padding: 0.5rem;
         height: 90%;
-        width: 60%;
+        width: 100%;
         box-sizing: border-box;
         background-color: $fadeGrey;
         float: left;
@@ -44,6 +44,23 @@
         height: 1rem;
         float: left;
         margin: 0 0.3rem 0 0.3rem;
+    }
+
+    &__header{
+        width: 99.4%;
+        height: 1.3rem;
+        font-family: 'Kurale', serif;
+        margin: 2px 0 0.5rem 0;
+        border-bottom: 1.3px dashed $fadeGrey;
+
+    }
+
+    &__arrow{
+        float: left;
+        background: url('../img/iconarrow-yellow.png') no-repeat;
+        background-size: 1rem 1rem;
+        width: 1rem; height: 1rem;
+        margin: 0.1rem 0.3rem 0 0;
     }
 
     &__waist{

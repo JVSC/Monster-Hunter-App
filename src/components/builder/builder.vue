@@ -1,6 +1,9 @@
 <template>
     <section class="holder holder--xl">
-        <section class='build__section'>  
+        <!-- Current set start -->
+        <section class='build__section'> 
+            <!--Header start-->
+            <h5 class='build__header'> <i class='build__arrow'></i> Current Set</h5> 
             <div class='build__pieces'>
               <div v-for='piece in build' 
                 :key='piece.type' 
@@ -8,18 +11,18 @@
                 <div :class="'build__'+piece.type+ ' build__imgsize'"></div>{{ piece.name | greekfy }}
               </div>
             </div>
-            <div class="build__pieces build__pieces--narrow">
-              <div class='build__piece build__piece--weapon'></div>
-            </div>
         </section>
+        
+        <!--Weapon start!-->
         <section class="build__section">
-          <div 
-            v-for='skill in set.skills' 
-            :key="skill.name"
-            class='build__piece'>
-            {{skill.name}} {{skill.level}}
-          </div>
+          <h5 class='build__header'> <i class='build__arrow'></i> Weapon </h5>
         </section>
+
+        <!-- Filter start! -->
+        <section class="build__section">
+          <h5 class='build__header'> <i class='build__arrow'></i> Gear Search Filters</h5>
+        </section>
+   
     </section>
 </template>
 

@@ -66,7 +66,7 @@
 			filter() {
 				var that = this;
 				this.skills.forEach(skill => {
-					if (skill.name.includes(that.filter))
+					if (skill.name.toLowerCase().includes(that.filter.toLowerCase()))
 						skill.active = false;
 					else
 						skill.active = true;
