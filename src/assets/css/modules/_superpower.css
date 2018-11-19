@@ -33,7 +33,6 @@
 	&__code{
 		width: 90%;
 		margin: auto;
-		border-bottom: 1px dashed grey;
 		margin-bottom: 0.5rem;
 		padding-bottom: 0.5rem;
 		box-sizing: border-box;
@@ -46,6 +45,9 @@
 		&--list{
 			border: none;
 			margin: 0;
+			margin: 2.5% 0 2.5% 0;
+			height: 60%;
+			overflow: auto;
 		}
 	}
 
@@ -85,16 +87,18 @@
 		font-weight: Italic;
 		margin-bottom: 0.5rem;
 		box-sizing: border-box;
-		border: 4px double $grey;
+		background-image: linear-gradient(to right, rgba(43,44,45,0), rgba(43,44,45,0.5), rgba(0,0,0,0));
 	}
 
 	&__input{
 		outline: none;
 		border: none;
 		background-color: inherit;
-		color: #636466;
+		color: $lighterGrey;
 		display: inline-block;
-		width: 60%;
+		width: 80%;
 		margin-left: 0.3rem;
+		font-size: 0.8rem;
+		text-align: center;
 	}
 }

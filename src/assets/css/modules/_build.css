@@ -52,7 +52,7 @@
         font-family: 'Kurale', serif;
         margin: 2px 0 0.5rem 0;
         border-bottom: 1.3px dashed $fadeGrey;
-
+		color: $lighterGrey;
     }
 
     &__arrow{
